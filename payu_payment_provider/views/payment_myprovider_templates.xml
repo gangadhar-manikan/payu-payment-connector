@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <!-- Extend payment acquirer form -->
+        <record id="view_payment_acquirer_form_myprovider" model="ir.ui.view">
+            <field name="name">payment.acquirer.form.myprovider</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.view_payment_acquirer_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='provider']" position="inside">
+                    <selection name="provider" string="Provider">
+                        <option name="myprovider" string="MyProvider"/>
+                    </selection>
+                </xpath>
+                <xpath expr="//group[@name='provider_credentials']" position="inside">
+                    <field name="myprovider_merchant_id" groups="base.group_system"/>
+                    <field name="myprovider_merchant_key" groups="base.group_system"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
